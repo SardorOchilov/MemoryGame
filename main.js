@@ -5,16 +5,20 @@ const stickers = ["😀", "😁", "😂", "😀", "😁", "😂"];
 
 stickers.sort(() => Math.random() - 0.5);
 
-for(let i = 0; i < cards.length; i++){
-    cards[i].lastElementChild.textContent = stickers[i];
-
+for (let i = 0; i < cards.length; i++) {
+  cards[i].lastElementChild.textContent = stickers[i];
 }
 
 for (let card of cards) {
   card.addEventListener("click", () => {
-    if (compare.indexOf(card) === -1 && compare.length < 2) {
+    if (
+      compare.indexOf(card) === -1 &&
+      compare.length < 2 &&
+      card.className !== "card active"
+    ) {
       compare.push(card);
       card.classList.add("active");
+      console.log(card.className);
     }
 
     if (compare.length === 2) {
